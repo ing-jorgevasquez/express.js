@@ -8,7 +8,7 @@
     "dev": "nodemon index"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jorge Isaac Vasquez Sanchez",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
