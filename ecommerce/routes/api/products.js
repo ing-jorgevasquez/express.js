@@ -7,9 +7,9 @@ const productsService = new ProductsService();
 router.get('/', async function(req, res, next){
     const { tags } = req.query;
     try {
-        const product = await productsService.getProducts({ tags });
+        const productsList = await productsService.getProducts({ tags });
         res.status(200).json({
-            data: product,
+            data: productsList,
             message: 'products listed'
         });
     } catch (error) {
@@ -34,9 +34,9 @@ router.post('/', async function(req, res, next){
     //const { product } = req.body
     const { body: product } = req;
     try {
-        const productCreated = await productsService.createProduct({ product });
+        const createdProduct = await productsService.createProduct({ product });
         res.status(201).json({
-            data: productCreated,
+            data: createdProduct,
             message: 'product created'
         });
     } catch (error) {
@@ -48,11 +48,11 @@ router.put('/:productId', async function(req, res, next){
     const { productId } = req.params;
     const { body: product } = req;
     try {
-        const productUpdated = await productsService.updateProduct({ productId, product });
+        const updatedProduct = await productsService.updateProduct({ productId, product });
         res.status(200).json({
-        data: productUpdated,
-        message: 'product updated'
-    })
+            data: updatedProduct,
+            message: 'product updated'
+        })
     } catch (error) {
         next(error)   
     }
@@ -61,9 +61,9 @@ router.put('/:productId', async function(req, res, next){
 router.delete('/:productId', async function(req, res, next){
     const { productId } = req.params;
     try {
-        const product = await productsService.deleteProduct({ productId });
+        const deletedProduct = await productsService.deleteProduct({ productId });
         res.status(200).json({
-            data: product,
+            data: deletedProduct,
             message: 'product deleted'
         })
     } catch (error) {
